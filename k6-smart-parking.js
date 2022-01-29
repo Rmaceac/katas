@@ -1,22 +1,22 @@
 const whereCanIPark = (spots, vehicle) => {
-  let openReg = false;
-  let openSmall = false;
-  let openMoto = false;
-  let openSpot = [];
-  for (let spot of spots) {
-    for (let i = 0; i < spot.length; i++) {
-      if (spot[i] === "R") {
-        openReg = true;
-      } else if (spot[i] = "S") {
-        openSmall = true;
-      } else if (spot[i] = "M") {
-        openMoto = true;
+  for (let y = 0; y < spots.length; y++) {
+    for (let x = 0; x < spots[y].length; x++) {
+      const openSpot = spots[y][x];
+      if (vehicle === "regular") {
+        if (openSpot === "R") {
+          return [x, y];
+        }
+      } else if (vehicle === "small") {
+          if (openSpot === "R" || openSpot === "S") {
+            return [x, y];
+          }
+      } else if (vehicle === "motorcycle") {
+          if (openSpot === "R" || openSpot === "S" || openSpot === "M") {
+            return[x, y];
+          } 
       }
     }
-  }
-  if (vehicle === "motorcycle" && (openReg || openSmall || openMoto)) {
-    openSpot = spot.indexOf
-  }
+  } return false;
 };
 
 console.log(whereCanIPark(
